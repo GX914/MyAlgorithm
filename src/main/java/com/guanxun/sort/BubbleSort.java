@@ -16,6 +16,9 @@ public class BubbleSort {
 
     }
 
+    /**
+     * 普通冒泡排序
+     * */
     private static void sort1(int[] array){
 
         for (int i = 0; i < array.length - 1; i++){
