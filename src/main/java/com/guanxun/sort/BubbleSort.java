@@ -17,7 +17,7 @@ public class BubbleSort {
     }
 
     /**
-     * 普通冒泡排序
+     * 普通冒泡排序（pull测试一下）
      * */
     private static void sort1(int[] array){
 
