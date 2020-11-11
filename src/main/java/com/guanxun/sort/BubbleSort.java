@@ -17,9 +17,14 @@ public class BubbleSort {
         int[] array2 = new int[]{5,8,6,3,9,2,1,7};
         sort2(array2);
         System.out.println(Arrays.toString(array2));
+
+        int[] array3 = new int[]{5,8,6,3,9,2,1,7};
+        sort3(array3);
+        System.out.println(Arrays.toString(array3));
     }
 
     /**
+     * 第一版
      * 普通冒泡排序（从小到大）
      * */
     private static void sort1(int[] array){
@@ -36,6 +41,7 @@ public class BubbleSort {
     }
 
     /**
+     * 第二版
      * 冒泡排序优化算法
      * 当判断到后续没有进行元素交换，说明已经排序完成了。
      * */
@@ -53,6 +59,34 @@ public class BubbleSort {
                     isSorted = false;
                 }
             }
+            if (isSorted){
+                break;
+            }
+        }
+    }
+
+    /**
+     * 第三版
+     * 冒泡排序优化算法
+     * 1.建立标记lastExchangeIndex，表示在这个下标后面没有已经排序完成，不用往后比较排序
+     * 2.建立标记isSorted，表示在上一轮中没有发生元素互换，排序完成。
+     * */
+    public static void sort3(int[] array){
+
+        int lastExchangeIndex = 0;
+        int sortBorder = array.length - 1;
+        for (int i = 0; i < array.length - 1; i++){
+            boolean isSorted = true;
+            for (int j = 0;j < sortBorder; j++){
+                if(array[j] > array[j+1]){
+                    int tmp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = tmp;
+                    isSorted = false;
+                    lastExchangeIndex = j;
+                }
+            }
+            sortBorder = lastExchangeIndex;
             if (isSorted){
                 break;
             }
